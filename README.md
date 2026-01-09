@@ -2,7 +2,7 @@
 
 A lightweight TypeScript helper library for managing web audio elements with smooth transitions.
 
-🔗 **Live Demo:** [https://nurjamilahh/nur-audio-library/](https://username.github.io/nur-audio-library/)
+🔗 **Live Demo:** [https://nurjamilahh.github.io/nur-audio-library/](https://username.github.io/nur-audio-library/)
 ![Nur Audio Demo Preview](assets/nur-audio-library-repo.png)
 
 ---
