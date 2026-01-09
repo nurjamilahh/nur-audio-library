@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nur Audio Library Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      @keyframes pulse-soft {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+      .animate-pulse-soft {
+        animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-900 text-white min-h-screen flex items-center justify-center p-4"
+  >
+    <div
+      class="bg-slate-800 p-8 rounded-3xl shadow-2xl border border-slate-700 w-full max-w-md text-center relative overflow-hidden"
+    >
+      <h1
+        class="text-3xl font-bold mb-2 text-sky-400 flex items-center justify-center gap-3"
+      >
+        <i id="music-icon" class="fa-solid fa-music"></i>
+        <span>Nur Audio Demo</span>
+      </h1>
+      <p class="text-slate-400 mb-8 text-sm">
+        Experience smooth TypeScript audio transitions
+      </p>
+
+      <audio id="demo-audio" loop>
+        <source src="assets/rocket-396890.mp3" type="audio/mpeg" />
+      </audio>
+
+      <div class="space-y-4">
+        <button
+          onclick="playWithFade()"
+          class="w-full bg-sky-600 hover:bg-sky-500 transition-all py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 active:scale-95"
+        >
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Play with Fade-In
+        </button>
+
+        <button
+          onclick="playInstant()"
+          class="w-full bg-slate-700 hover:bg-slate-600 transition-all py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 active:scale-95"
+        >
+          <i class="fa-solid fa-play"></i> Play Instant
+        </button>
+
+        <button
+          onclick="stopAll()"
+          class="w-full bg-rose-600/10 hover:bg-rose-600 text-rose-500 hover:text-white border border-rose-600/50 transition-all py-4 rounded-2xl font-semibold mt-4 flex items-center justify-center gap-3 active:scale-95"
+        >
+          <i class="fa-solid fa-stop"></i> Stop All
+        </button>
+      </div>
+
+      <div
+        id="toast"
+        class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-sky-500 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none"
+      >
+        Audio Fading In...
+      </div>
+    </div>
+
+    <script type="module">
+      import { fadeInAudio, stopAllAudio } from "./dist/audio-helper.js";
+
+      const audioEl = document.getElementById("demo-audio");
+      const icon = document.getElementById("music-icon");
+      const toast = document.getElementById("toast");
+
+      function showToast(message) {
+        toast.innerText = message;
+        toast.style.opacity = "1";
+        setTimeout(() => {
+          toast.style.opacity = "0";
+        }, 2000);
+      }
+
+      window.playWithFade = () => {
+        showToast("✨ Fading in smoothly...");
+        icon.classList.add("animate-pulse-soft", "text-sky-300");
+        fadeInAudio(audioEl, 0.7);
+      };
+
+      window.playInstant = () => {
+        showToast("⚡ Playing instantly");
+        icon.classList.remove("animate-pulse-soft");
+        stopAllAudio();
+        audioEl.volume = 0.7;
+        audioEl.play().catch((e) => console.warn(e));
+      };
+
+      window.stopAll = () => {
+        showToast("⏹️ All audio stopped");
+        icon.classList.remove("animate-pulse-soft", "text-sky-300");
+        stopAllAudio();
+      };
+    </script>
+  </body>
+</html>

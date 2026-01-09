@@ -1,0 +1,13 @@
+{
+  "name": "nur-audio-library",
+  "version": "1.0.0",
+  "description": "Audio helper sederhana untuk mengelola elemen audio di browser menggunakan TypeScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

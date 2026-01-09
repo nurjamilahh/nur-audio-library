@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "outDir": "./dist",
+    "rootDir": "./js",
+    "lib": ["DOM", "ES6"],
+    "strict": true,
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "include": ["js/**/*.ts"]
+}
