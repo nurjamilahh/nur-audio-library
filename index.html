@@ -41,22 +41,22 @@
       </p>
 
       <audio id="demo-audio" loop>
-        <source src="assets/rocket-396890.mp3" type="audio/mpeg" />
+        <source src="assets/rps-451590.mp3" type="audio/mpeg" />
       </audio>
 
       <div class="space-y-4">
+        <button
+          onclick="playInstant()"
+          class="w-full bg-slate-700 hover:bg-slate-600 transition-all py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 active:scale-95"
+        >
+          <i class="fa-solid fa-play"></i> Play
+        </button>
+
         <button
           onclick="playWithFade()"
           class="w-full bg-sky-600 hover:bg-sky-500 transition-all py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 active:scale-95"
         >
           <i class="fa-solid fa-wand-magic-sparkles"></i> Play with Fade-In
-        </button>
-
-        <button
-          onclick="playInstant()"
-          class="w-full bg-slate-700 hover:bg-slate-600 transition-all py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 active:scale-95"
-        >
-          <i class="fa-solid fa-play"></i> Play Instant
         </button>
 
         <button
